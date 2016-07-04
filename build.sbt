@@ -5,14 +5,13 @@ lazy val scalacheck = (project in file("."))
   organization := "org.scala-exercises",
   name         := "exercises-scalacheck",
   scalaVersion := "2.11.7",
-  version := "0.1.1",
+  version := "0.1.2",
   resolvers ++= Seq(
     Resolver.sonatypeRepo("snapshots"),
     Resolver.sonatypeRepo("releases")
   ),
   libraryDependencies ++= Seq(
     "org.scalatest" %% "scalatest" % "2.2.4",
-    "com.fortysevendeg" %% "github4s" % "0.5",
     "org.scala-exercises" %% "exercise-compiler" % version.value,
     "org.scala-exercises" %% "definitions" % version.value,
     "org.scalacheck" %% "scalacheck" % "1.12.5",
@@ -26,7 +25,7 @@ lazy val gpgFolder = sys.env.getOrElse("SE_GPG_FOLDER", ".")
 
 lazy val publishSettings = Seq(
   organizationName := "Scala Exercises",
-  organizationHomepage := Some(new URL("http://scala-exercises.org")),
+  organizationHomepage := Some(new URL("https://scala-exercises.org")),
   startYear := Some(2016),
   description := "Scala Exercises: The path to enlightenment",
   homepage := Some(url("http://scala-exercises.org")),
