@@ -6,7 +6,13 @@ import PropertiesHelpers._
 
 /** A ''property'' is the testable unit in ScalaCheck, and is represented by the `org.scalacheck.Prop` class.
   * There are several ways to create properties in ScalaCheck, one of them is to use the `org.scalacheck.Prop.forAll`
-  * method like in the example above. That method creates universally quantified properties directly, but it is also
+  * method like in the example below.
+  *
+  * {{{
+  *   val propSqrt = forAll { (n: Int) => scala.math.sqrt(n*n) == n }
+  * }}}
+  *
+  * That method creates universally quantified properties directly, but it is also
   * possible to create new properties by combining other properties, or to use any of the specialised
   * methods in the `org.scalacheck.Prop` object.
   *
@@ -17,12 +23,16 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
   /** ==Universally quantified properties==
     *
     * As mentioned before, `org.scalacheck.Prop.forAll` creates universally quantified properties.
-    * `forAll` takes a function as parameter, and creates a property out of it that can be tested with the check method.
-    * The function should return `Boolean` or another property, and can take parameters of any types, as long as there
-    * exist implicit `Arbitrary` instances for the types. By default, ScalaCheck has instances for common types like
-    * `Int`, `String`, `List`, etc, but it is also possible to define your own `Arbitrary` instances.
+    * `forAll` takes a function as parameter, and creates a property out of it that can be tested with the `check`
+    * method or with Scalatest, like in these examples.
     *
-    * For example, for every `String` generated:
+    *
+    * The function passed to `forAll` should return `Boolean` or another property, and can take parameters of any types,
+    * as long as there exist implicit `Arbitrary` instances for the types.
+    * By default, ScalaCheck has instances for common types like `Int`, `String`, `List`, etc, but it is also possible
+    * to define your own `Arbitrary` instances.
+    *
+    * For example:
     */
   def universallyQuantifiedPropertiesString(res0: Boolean) = {
 
@@ -63,7 +73,7 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
     *
     * If the implication operator is given a condition that is hard or impossible to fulfill, ScalaCheck might
     * not find enough passing test cases to state that the property holds. In the following trivial example,
-    * all cases where n is non-zero will be thrown away:
+    * all cases where `n` is non-zero will be thrown away:
     *
     * {{{
     * scala> import org.scalacheck.Prop.{forAll, BooleanOperators}
@@ -81,8 +91,7 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
     * Using implications, we realise that a property might not just pass or fail, it could also be undecided if
     * the implication condition doesn't get fulfilled.
     *
-    * In this example, ScalaCheck will only care for the cases when n is not negative. We also filter out large numbers,
-    * since we don't want to generate huge lists.
+    * In this example, ScalaCheck will only care for the cases when `n` is an even number.
     */
   def conditionalProperties(res0: Int) = {
 
@@ -118,11 +127,10 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
     import org.scalacheck.Gen
     import org.scalacheck.Prop.forAll
 
-    val oneInteger = Gen.choose(0,50)
-    val anotherInteger = Gen.choose(51,100)
+    val smallInteger = Gen.choose(0,100)
 
     check {
-      forAll(oneInteger) { n => (n > 50) == res0 } && forAll(anotherInteger) { n => (n > 50) == res1 }
+      forAll(smallInteger) { n => (n > 100) == res0 } && forAll(smallInteger) { n => (n >= 0) == res1 }
     }
 
   }
@@ -131,7 +139,7 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
     *
     * Often you want to specify several related properties, perhaps for all methods in a class.
     * ScalaCheck provides a simple way of doing this, through the `Properties` trait.
-    * Look at the following specifications that only works for zero:
+    * Look at the following specifications that define some properties for zero:
     *
     * {{{
     * import org.scalacheck._
@@ -140,9 +148,11 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
     *
     *   import org.scalacheck.Prop.{forAll, BooleanOperators}
     *
-    *   property("sum") = forAll { n: Int => (n != 0) ==> (n + value == n) }
+    *   property("addition property") = forAll { n: Int => (n != 0) ==> (n + value == n) }
     *
-    *   property("prod") = forAll { n: Int => (n != 0) ==> (n * value == 0) }
+    *   property("additive inverse property") = forAll { n: Int => (n != 0) ==> (n + (-n) == value) }
+    *
+    *   property("multiplication property") = forAll { n: Int => (n != 0) ==> (n * value == 0) }
     *
     * }
     * }}}
@@ -150,6 +160,7 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
     * You can use the check method of the `Properties` class to check all specified properties,
     * just like for simple `Prop` instances. In fact, `Properties` is a subtype of `Prop`,
     * so you can use it just as if it was a single property.
+    * 
     * That single property holds if and only if all of the contained properties hold.
     */
   def groupingProperties(res0: Int) = {

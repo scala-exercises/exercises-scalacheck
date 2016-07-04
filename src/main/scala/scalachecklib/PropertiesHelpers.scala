@@ -8,9 +8,11 @@ object PropertiesHelpers {
 
     import Prop.{BooleanOperators, forAll}
 
-    property("sum") = forAll { n: Int => (n != 0) ==> (n + value == n) }
+    property("addition property") = forAll { n: Int => (n != 0) ==> (n + value == n) }
 
-    property("prod") = forAll { n: Int => (n != 0) ==> (n * value == 0) }
+    property("additive inverse property") = forAll { n: Int => (n != 0) ==> (n + (-n) == value) }
+
+    property("multiplication property") = forAll { n: Int => (n != 0) ==> (n * value == 0) }
 
   }
 
