@@ -39,7 +39,9 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
     import org.scalacheck.Prop.forAll
 
     check {
-      forAll { (s1: String, s2: String) => (s1 + s2).endsWith(s2) == res0 }
+      forAll { (s1: String, s2: String) =>
+        (s1 + s2).endsWith(s2) == res0
+      }
     }
 
   }
@@ -61,7 +63,9 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
     val smallInteger = Gen.choose(0,100)
 
     check {
-      forAll(smallInteger) { n => (n >= 0 && n <= 100) == res0 }
+      forAll(smallInteger) { n =>
+        (n >= 0 && n <= 100) == res0
+      }
     }
 
   }
@@ -99,7 +103,7 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
 
     check {
       forAll { n: Int =>
-        (n % 2 == 0) ==> { n % 2 == res0 }
+        (n % 2 == 0) ==> (n % 2 == res0)
       }
     }
 
@@ -130,7 +134,8 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
     val smallInteger = Gen.choose(0,100)
 
     check {
-      forAll(smallInteger) { n => (n > 100) == res0 } && forAll(smallInteger) { n => (n >= 0) == res1 }
+      forAll(smallInteger) { n => (n > 100) == res0 } &&
+        forAll(smallInteger) { n => (n >= 0) == res1 }
     }
 
   }
