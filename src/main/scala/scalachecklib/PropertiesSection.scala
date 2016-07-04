@@ -144,9 +144,9 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
     * {{{
     * import org.scalacheck._
     *
-    * class ZeroSpecification(value: Int) extends org.scalacheck.Properties("Zero") {
+    * class ZeroSpecification(value: Int) extends Properties("Zero") {
     *
-    *   import org.scalacheck.Prop.{forAll, BooleanOperators}
+    *   import org.scalacheck.Prop.{BooleanOperators, forAll}
     *
     *   property("addition property") = forAll { n: Int => (n != 0) ==> (n + value == n) }
     *
@@ -160,7 +160,7 @@ object PropertiesSection extends Checkers with Matchers with exercise.Section {
     * You can use the check method of the `Properties` class to check all specified properties,
     * just like for simple `Prop` instances. In fact, `Properties` is a subtype of `Prop`,
     * so you can use it just as if it was a single property.
-    * 
+    *
     * That single property holds if and only if all of the contained properties hold.
     */
   def groupingProperties(res0: Int) = {
