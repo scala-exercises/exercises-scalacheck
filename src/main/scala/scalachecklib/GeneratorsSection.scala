@@ -172,7 +172,7 @@ object GeneratorsSection extends Checkers with Matchers with exercise.Section {
     * There is also `Gen.nonEmptyContainerOf` for generating non-empty containers, and `Gen.containerOfN` for
     * generating containers of a given size.
     */
-  def generatingContainers(res0: Seq[Int]) = {
+  def generatingContainers(res0: List[Int]) = {
 
     import org.scalacheck.Gen
     import org.scalacheck.Prop.forAll
