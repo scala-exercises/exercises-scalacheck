@@ -58,8 +58,10 @@ object GeneratorsSection extends Checkers with Matchers with exercise.Section {
 
     val vowel = Gen.oneOf('A', 'E', 'I', 'O', 'U')
 
+    val validChars: Seq[Char] = res0
+
     check(forAll(vowel) { v =>
-      res0.contains(v)
+      validChars.contains(v)
     })
   }
 
@@ -71,13 +73,12 @@ object GeneratorsSection extends Checkers with Matchers with exercise.Section {
     *   (4, 'E'),
     *   (2, 'I'),
     *   (3, 'O'),
-    *   (1, 'U'),
-    *   (1, 'Y')
+    *   (1, 'U')
     * )
     * }}}
     *
-    * Now, the vowel generator will generate ''E:s'' more often than ''Y:s''. Roughly, 4/14 of the values generated
-    * will be ''E:s'', and 1/14 of them will be ''Y:s''.
+    * Now, the vowel generator will generate ''E:s'' more often than ''U:s''. Roughly, 4/14 of the values generated
+    * will be ''E:s'', and 1/14 of them will be ''U:s''.
     *
     * Another methods in the `Gen` API:
     * {{{
@@ -102,8 +103,8 @@ object GeneratorsSection extends Checkers with Matchers with exercise.Section {
     check(forAll(posNum[Int])(n => (n > 0) == res1))
 
     check {
-      forAll(listOfN(10, posNum[Int])) { n =>
-        !n.exists(_ < 0) && n.length == res2
+      forAll(listOfN(10, posNum[Int])) { list =>
+        !list.exists(_ < 0) && list.length == res2
       }
     }
   }
@@ -134,8 +135,6 @@ object GeneratorsSection extends Checkers with Matchers with exercise.Section {
     * {{{
     * case class Foo(intValue: Int, charValue: Char)
     * }}}
-    *
-    * ''In the next sections we will see the `Arbitrary` Typeclass that provides a better way to accomplish this.''
     */
   def caseClassGenerator(res0: Boolean) = {
 
@@ -149,6 +148,40 @@ object GeneratorsSection extends Checkers with Matchers with exercise.Section {
 
     check(forAll(fooGen) {
       foo => foo.intValue > 0 && foo.charValue.isDigit == res0
+    })
+  }
+
+  /** '''Sized Generators'''
+    *
+    * When ScalaCheck uses a generator to generate a value, it feeds it with some parameters. One of the parameters
+    * the generator is given, is a size value, which some generators use to generate their values.
+    *
+    * If you want to use the size parameter in your own generator, you can use the `Gen.sized` method:
+    *
+    * {{{
+    * def sized[T](f: Int => Gen[T])
+    * }}}
+    *
+    * In this example we're creating a generator that produces two lists of numbers where 1/3 are positive and 2/3 are
+    * negative. ''Note: We're also returning the original size to verify the behaviour''
+    */
+  def sizedGenerator(res0: Int, res1: Int) = {
+
+    import org.scalacheck.Gen
+    import org.scalacheck.Prop.forAll
+
+    val myGen = Gen.sized { size =>
+      val positiveNumbers = size / 3
+      val negativeNumbers = size * 2 / 3
+      for {
+        posNumList <- Gen.listOfN(positiveNumbers, Gen.posNum[Int])
+        negNumList <- Gen.listOfN(negativeNumbers, Gen.posNum[Int] map (n => -n))
+      } yield (size, posNumList, negNumList)
+    }
+
+    check(forAll(myGen) {
+      case (genSize, posN, negN) =>
+        posN.length == genSize / res0 && negN.length == genSize * res1 / 3
     })
   }
 
@@ -179,7 +212,9 @@ object GeneratorsSection extends Checkers with Matchers with exercise.Section {
 
     val genIntList = Gen.containerOf[List,Int](Gen.oneOf(2, 4, 6))
 
-    check(forAll(genIntList)(_ forall (elem => res0.contains(elem))))
+    val validNumbers: List[Int] = res0
+
+    check(forAll(genIntList)(_ forall (elem => validNumbers.contains(elem))))
   }
 
 }

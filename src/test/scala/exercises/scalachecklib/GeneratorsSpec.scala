@@ -64,6 +64,17 @@ class GeneratorsSpec extends Spec with Checkers {
 
   }
 
+  def `sized generator` = {
+
+    check(
+      Test.testSuccess(
+        GeneratorsSection.sizedGenerator _,
+        3 :: 2 :: HNil
+      )
+    )
+
+  }
+
   def `list container` = {
 
     check(
