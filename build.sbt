@@ -15,6 +15,7 @@ lazy val scalacheck = (project in file("."))
     "org.scala-exercises" %% "exercise-compiler" % version.value,
     "org.scala-exercises" %% "definitions" % version.value,
     "org.scalacheck" %% "scalacheck" % "1.12.5",
+    "com.github.alexarchambault" %% "scalacheck-shapeless_1.12" % "0.3.1",
     compilerPlugin("org.spire-math" %% "kind-projector" % "0.7.1")
   )
 )
