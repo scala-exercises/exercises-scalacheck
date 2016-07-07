@@ -17,7 +17,7 @@ import org.scalatest.prop.Checkers
   *
   * @param name generators
   */
-object GeneratorsSection extends Checkers with Matchers with exercise.Section {
+object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.definitions.Section {
 
   import GeneratorsHelper._
 
