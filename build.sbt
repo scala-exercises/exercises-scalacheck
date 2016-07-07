@@ -5,7 +5,7 @@ lazy val scalacheck = (project in file("."))
   organization := "org.scala-exercises",
   name         := "exercises-scalacheck",
   scalaVersion := "2.11.7",
-  version := "0.1.2",
+  version := "0.2.1-SNAPSHOT",
   resolvers ++= Seq(
     Resolver.sonatypeRepo("snapshots"),
     Resolver.sonatypeRepo("releases")
@@ -29,7 +29,7 @@ lazy val publishSettings = Seq(
   organizationHomepage := Some(new URL("https://scala-exercises.org")),
   startYear := Some(2016),
   description := "Scala Exercises: The path to enlightenment",
-  homepage := Some(url("http://scala-exercises.org")),
+  homepage := Some(url("https://scala-exercises.org")),
   pgpPassphrase := Some(sys.env.getOrElse("SE_GPG_PASSPHRASE", "").toCharArray),
   pgpPublicRing := file(s"$gpgFolder/pubring.gpg"),
   pgpSecretRing := file(s"$gpgFolder/secring.gpg"),

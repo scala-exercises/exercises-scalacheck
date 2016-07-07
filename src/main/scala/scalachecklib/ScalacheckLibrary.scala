@@ -4,7 +4,7 @@ package scalachecklib
   *
   * @param name scalacheck
   */
-object ScalacheckLibrary extends exercise.Library {
+object ScalacheckLibrary extends org.scalaexercises.definitions.Library {
   override def owner = "scala-exercises"
   override def repository = "exercises-scalacheck"
 

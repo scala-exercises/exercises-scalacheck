@@ -2,7 +2,6 @@ package scalachecklib
 
 import org.scalatest._
 import org.scalatest.prop.Checkers
-import PropertiesHelpers._
 
 /** A ''property'' is the testable unit in ScalaCheck, and is represented by the `org.scalacheck.Prop` class.
   * There are several ways to create properties in ScalaCheck, one of them is to use the `org.scalacheck.Prop.forAll`
@@ -18,7 +17,9 @@ import PropertiesHelpers._
   *
   * @param name properties
   */
-object PropertiesSection extends Checkers with Matchers with exercise.Section {
+object PropertiesSection extends Checkers with Matchers with org.scalaexercises.definitions.Section {
+
+  import PropertiesHelpers._
 
   /** ==Universally quantified properties==
     *
