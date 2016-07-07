@@ -11,6 +11,7 @@ object ScalacheckLibrary extends org.scalaexercises.definitions.Library {
   override def color = Some("#5B5988")
 
   override def sections = List(
-    PropertiesSection
+    PropertiesSection,
+    GeneratorsSection
   )
 }
