@@ -109,7 +109,7 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
     }
   }
 
-  /** '''Conditional Generators'''
+  /** ==Conditional Generators==
     *
     * Conditional generators can be defined using `Gen.suchThat`.
     *
@@ -128,7 +128,7 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
     check(forAll(smallEvenInteger)(_ % 2 == res0))
   }
 
-  /** '''Case class Generators'''
+  /** ==Case class Generators==
     *
     * On the basis of the above we can create a generator for the next case class:
     *
@@ -151,7 +151,7 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
     })
   }
 
-  /** '''Sized Generators'''
+  /** ==Sized Generators==
     *
     * When ScalaCheck uses a generator to generate a value, it feeds it with some parameters. One of the parameters
     * the generator is given, is a size value, which some generators use to generate their values.
@@ -185,7 +185,7 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
     })
   }
 
-  /** '''Generating Containers'''
+  /** ==Generating Containers==
     *
     * There is a special generator, `Gen.containerOf`, that generates containers such as lists and arrays.
     * They take another generator as argument, that is responsible for generating the individual items.
