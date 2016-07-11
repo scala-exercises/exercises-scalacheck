@@ -136,7 +136,7 @@ object PropertiesSection extends Checkers with Matchers with org.scalaexercises.
 
     check {
       forAll(smallInteger) { n => (n > 100) == res0 } &&
-        forAll(smallInteger) { n => (n >= 0) == res1 }
+      forAll(smallInteger) { n => (n >= 0) == res1 }
     }
 
   }

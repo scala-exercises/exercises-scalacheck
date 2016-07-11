@@ -60,9 +60,11 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
 
     val validChars: Seq[Char] = res0
 
-    check(forAll(vowel) { v =>
-      validChars.contains(v)
-    })
+    check {
+      forAll(vowel) { v =>
+        validChars.contains(v)
+      }
+    }
   }
 
   /** The distribution is uniform, but if you want to control it you can use the frequency combinator:
@@ -98,9 +100,13 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
     import org.scalacheck.Gen.{alphaChar, posNum, listOfN}
     import org.scalacheck.Prop.forAll
 
-    check(forAll(alphaChar)(_.isDigit == res0))
+    check {
+      forAll(alphaChar)(_.isDigit == res0)
+    }
 
-    check(forAll(posNum[Int])(n => (n > 0) == res1))
+    check {
+      forAll(posNum[Int])(n => (n > 0) == res1)
+    }
 
     check {
       forAll(listOfN(10, posNum[Int])) { list =>
@@ -125,7 +131,9 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
 
     val smallEvenInteger = Gen.choose(0,200) suchThat (_ % 2 == 0)
 
-    check(forAll(smallEvenInteger)(_ % 2 == res0))
+    check {
+      forAll(smallEvenInteger)(_ % 2 == res0)
+    }
   }
 
   /** ==Case class Generators==
@@ -146,9 +154,11 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
       charValue <- Gen.alphaChar
     } yield Foo(intValue, charValue)
 
-    check(forAll(fooGen) {
-      foo => foo.intValue > 0 && foo.charValue.isDigit == res0
-    })
+    check {
+      forAll(fooGen) {
+        foo => foo.intValue > 0 && foo.charValue.isDigit == res0
+      }
+    }
   }
 
   /** ==Sized Generators==
@@ -179,10 +189,12 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
       } yield (size, posNumList, negNumList)
     }
 
-    check(forAll(myGen) {
-      case (genSize, posN, negN) =>
-        posN.length == genSize / res0 && negN.length == genSize * res1 / 3
-    })
+    check {
+      forAll(myGen) {
+        case (genSize, posN, negN) =>
+          posN.length == genSize / res0 && negN.length == genSize * res1 / 3
+      }
+    }
   }
 
   /** ==Generating Containers==
@@ -214,7 +226,9 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
 
     val validNumbers: List[Int] = res0
 
-    check(forAll(genIntList)(_ forall (elem => validNumbers.contains(elem))))
+    check {
+      forAll(genIntList)(_ forall (elem => validNumbers.contains(elem)))
+    }
   }
 
 }
