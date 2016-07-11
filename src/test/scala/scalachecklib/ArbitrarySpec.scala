@@ -1,11 +1,10 @@
-package exercises.scalachecklib
+package scalachecklib
 
 import org.scalacheck.Shapeless._
+import org.scalaexercises.Test
 import org.scalatest.Spec
 import org.scalatest.prop.Checkers
 import shapeless.HNil
-
-import scalachecklib.ArbitrarySection
 
 class ArbitrarySpec extends Spec with Checkers {
 
