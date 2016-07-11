@@ -8,10 +8,42 @@ import org.scalatest.prop.Checkers
   * method like in the example below.
   *
   * {{{
-  *   val propSqrt = forAll { (n: Int) => scala.math.sqrt(n*n) == n }
+  * scala> val propConcatLists = forAll { (l1: List[Int], l2: List[Int]) =>
+  *   l1.size + l2.size == (l1 ::: l2).size }
   * }}}
   *
-  * That method creates universally quantified properties directly, but it is also
+  *
+  * We can use the `check` method to test it:
+  *
+  * {{{
+  * scala> propConcatLists.check
+  * + OK, passed 100 tests.
+  * }}}
+  *
+  *
+  * OK, that seemed alright. Now, we'll define another property.
+  *
+  * {{{
+  * scala> val propSqrt = forAll { (n: Int) => scala.math.sqrt(n*n) == n }
+  * }}}
+  *
+  *
+  * And check it:
+  *
+  * {{{
+  * scala> propSqrt.check
+  * ! Falsified after 2 passed tests.
+  * > ARG_0: -1
+  * > ARG_0_ORIGINAL: -488187735
+  * }}}
+  *
+  * Not surprisingly, the property doesn't hold. The argument `-1` falsifies it. You can also see that the argument
+  * `-488187735` falsifies the property. That was the first argument ScalaCheck found, and it was then
+  * [[https://github.com/rickynils/scalacheck/blob/master/doc/UserGuide.md#test-case-minimisation simplified]] to
+  * `-1`.
+  *
+  *
+  * The `forAll` method creates universally quantified properties directly, but it is also
   * possible to create new properties by combining other properties, or to use any of the specialised
   * methods in the `org.scalacheck.Prop` object.
   *
@@ -83,7 +115,7 @@ object PropertiesSection extends Checkers with Matchers with org.scalaexercises.
     * {{{
     * scala> import org.scalacheck.Prop.{forAll, BooleanOperators}
     * scala> val propTrivial = forAll { n: Int =>
-    *      |  (n == 0) ==> (n == 0)
+    *      |  (n == 0) ==> n + 10 == 10
     *      | }
     *
     * scala> propTrivial.check
