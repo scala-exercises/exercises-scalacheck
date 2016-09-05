@@ -8,7 +8,7 @@ object ScalacheckLibrary extends org.scalaexercises.definitions.Library {
   override def owner = "scala-exercises"
   override def repository = "exercises-scalacheck"
 
-  override def color = Some("#5B5988")
+  override def color = Some("#EBC477")
 
   override def sections = List(
     PropertiesSection,
