@@ -14,4 +14,6 @@ object ScalacheckLibrary extends org.scalaexercises.definitions.Library {
     PropertiesSection,
     GeneratorsSection
   )
+
+  override def logoPath = "scalacheck"
 }
