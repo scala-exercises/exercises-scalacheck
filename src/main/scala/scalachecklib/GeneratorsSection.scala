@@ -11,7 +11,7 @@ import org.scalatest.prop.Checkers
   *
   * A generator can be seen simply as a function that takes some generation parameters, and (maybe) returns a
   * generated value. That is, the type `Gen[T]` may be thought of as a function of type `Gen.Params => Option[T]`.
-  * However, the Gen class contains additional methods to make it possible to map generators, use them in
+  * However, the `Gen` class contains additional methods to make it possible to map generators, use them in
   * for-comprehensions and so on. Conceptually, though, you should think of generators simply as functions, and the
   * combinators in the `Gen` object can be used to create or modify the behaviour of such generator functions.
   *
@@ -21,7 +21,7 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
 
   import GeneratorsHelper._
 
-  /** Lets see how to create a new generator. The best way to do it is to use the generator combinators that exist
+  /** Let's see how to create a new generator. The best way to do it is to use the generator combinators that exist
     * in the `org.scalacheck.Gen` module. These can be combined using a for-comprehension. Suppose you need a generator
     * which generates a tuple that contains two random integer values, one of them being at least twice as big as the
     * other. The following definition does this:
@@ -44,9 +44,9 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
 
   }
 
-  /** You can create generators that picks one value out of a selection of values.
+  /** You can create generators that pick one value out of a selection of values.
     * The `oneOf` method creates a generator that randomly picks one of its parameters each time it generates a value.
-    * Notice that plain values are implicitly converted to generators (which always generates that value) if needed.
+    * Notice that plain values are implicitly converted to generators (which always generate that value) if needed.
     *
     *
     * The following generator generates a vowel:
@@ -82,7 +82,7 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
     * Now, the vowel generator will generate ''E:s'' more often than ''U:s''. Roughly, 4/14 of the values generated
     * will be ''E:s'', and 1/14 of them will be ''U:s''.
     *
-    * Another methods in the `Gen` API:
+    * Other methods in the `Gen` API:
     * {{{
     * def alphaChar: Gen[Char]
     *
@@ -138,7 +138,7 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
 
   /** ==Case class Generators==
     *
-    * On the basis of the above we can create a generator for the next case class:
+    * On the basis of the above we can create a generator for the following case class:
     *
     * {{{
     * case class Foo(intValue: Int, charValue: Char)
@@ -164,7 +164,7 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
   /** ==Sized Generators==
     *
     * When ScalaCheck uses a generator to generate a value, it feeds it with some parameters. One of the parameters
-    * the generator is given, is a size value, which some generators use to generate their values.
+    * the generator is given is a size value, which some generators use to generate their values.
     *
     * If you want to use the size parameter in your own generator, you can use the `Gen.sized` method:
     *
@@ -173,7 +173,7 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
     * }}}
     *
     * In this example we're creating a generator that produces two lists of numbers where 1/3 are positive and 2/3 are
-    * negative. ''Note: We're also returning the original size to verify the behaviour''
+    * negative. ''Note: we're also returning the original size to verify the behaviour.''
     */
   def sizedGenerator(res0: Int, res1: Int) = {
 
@@ -200,7 +200,7 @@ object GeneratorsSection extends Checkers with Matchers with org.scalaexercises.
   /** ==Generating Containers==
     *
     * There is a special generator, `Gen.containerOf`, that generates containers such as lists and arrays.
-    * They take another generator as argument, that is responsible for generating the individual items.
+    * It takes another generator as argument which is responsible for generating the individual items.
     * You can use it in the following way:
     *
     * {{{
