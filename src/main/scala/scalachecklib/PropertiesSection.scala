@@ -51,8 +51,6 @@ import org.scalatest.prop.Checkers
   */
 object PropertiesSection extends Checkers with Matchers with org.scalaexercises.definitions.Section {
 
-  import PropertiesHelpers._
-
   /** ==Universally quantified properties==
     *
     * As mentioned before, `org.scalacheck.Prop.forAll` creates universally quantified properties.
@@ -177,33 +175,30 @@ object PropertiesSection extends Checkers with Matchers with org.scalaexercises.
     *
     * Often you want to specify several related properties, perhaps for all methods in a class.
     * ScalaCheck provides a simple way of doing this, through the `Properties` trait.
-    * Look at the following specifications that define some properties for zero:
-    *
-    * {{{
-    * import org.scalacheck._
-    *
-    * class ZeroSpecification(value: Int) extends Properties("Zero") {
-    *
-    *   import org.scalacheck.Prop.{BooleanOperators, forAll}
-    *
-    *   property("addition property") = forAll { n: Int => (n != 0) ==> (n + value == n) }
-    *
-    *   property("additive inverse property") = forAll { n: Int => (n != 0) ==> (n + (-n) == value) }
-    *
-    *   property("multiplication property") = forAll { n: Int => (n != 0) ==> (n * value == 0) }
-    *
-    * }
-    * }}}
+    * Look at the following specifications that define some properties for zero.
     *
     * You can use the check method of the `Properties` class to check all specified properties,
     * just like for simple `Prop` instances. In fact, `Properties` is a subtype of `Prop`,
     * so you can use it just as if it was a single property.
     *
     * That single property holds if and only if all of the contained properties hold.
+    *
     */
-  def groupingProperties(res0: Int) = {
+    def groupingProperties(res0: Int, res1: Int, res2: Int) = {
+      import org.scalacheck.Properties
 
-    check(new ZeroSpecification(res0))
+      class ZeroSpecification extends Properties("Zero") {
 
-  }
+        import org.scalacheck.Prop.{BooleanOperators, forAll}
+
+        property("addition property") = forAll { n: Int => (n != 0) ==> (n + res0 == n) }
+
+        property("additive inverse property") = forAll { n: Int => (n != 0) ==> (n + (-n) == res1) }
+
+        property("multiplication property") = forAll { n: Int => (n != 0) ==> (n * res2 == 0) }
+
+      }
+
+      check(new ZeroSpecification)
+    }
 }
