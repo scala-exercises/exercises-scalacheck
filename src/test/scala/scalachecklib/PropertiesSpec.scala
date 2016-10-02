@@ -54,7 +54,7 @@ class PropertiesSpec extends Spec with Checkers {
     check(
       Test.testSuccess(
         PropertiesSection.groupingProperties _,
-        0 :: HNil
+        0 :: 0 :: 0 :: HNil
       )
     )
   }
