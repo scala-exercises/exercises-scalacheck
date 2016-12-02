@@ -1,14 +1,13 @@
 package scalachecklib
 
 import org.scalacheck.Shapeless._
-import org.scalaexercises.Test
-import org.scalatest.Spec
+import org.scalatest.FunSuite
 import org.scalatest.prop.Checkers
 import shapeless.HNil
 
-class ArbitrarySpec extends Spec with Checkers {
+class ArbitrarySpec extends FunSuite with Checkers {
 
-  def `implicit arbitrary char` = {
+  test("implicit arbitrary char") {
 
     check(
       Test.testSuccess(
@@ -18,7 +17,7 @@ class ArbitrarySpec extends Spec with Checkers {
     )
   }
 
-  def `implicit arbitrary case class` = {
+  test("implicit arbitrary case class") {
 
     check(
       Test.testSuccess(
@@ -28,7 +27,7 @@ class ArbitrarySpec extends Spec with Checkers {
     )
   }
 
-  def `arbitrary on gen` = {
+  test("arbitrary on gen") {
 
     check(
       Test.testSuccess(
