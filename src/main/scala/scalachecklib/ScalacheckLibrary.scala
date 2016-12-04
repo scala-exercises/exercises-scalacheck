@@ -12,7 +12,8 @@ object ScalacheckLibrary extends org.scalaexercises.definitions.Library {
 
   override def sections = List(
     PropertiesSection,
-    GeneratorsSection
+    GeneratorsSection,
+    ScalacheckDatetimeSection
   )
 
   override def logoPath = "scalacheck"
