@@ -185,7 +185,7 @@ object PropertiesSection extends Checkers with Matchers with org.scalaexercises.
     *
     */
     def groupingProperties(res0: Int, res1: Int, res2: Int) = {
-      import org.scalacheck.Properties
+      import org.scalacheck.{Prop, Properties}
 
       class ZeroSpecification extends Properties("Zero") {
 
@@ -199,6 +199,6 @@ object PropertiesSection extends Checkers with Matchers with org.scalaexercises.
 
       }
 
-      check(new ZeroSpecification)
+      check(Prop.all(new ZeroSpecification().properties.map(_._2): _*))
     }
 }

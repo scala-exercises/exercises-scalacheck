@@ -3,7 +3,7 @@ package scalachecklib
 import org.scalatest.Matchers
 import org.scalatest.prop.Checkers
 
-/** ==The `arbitrary` Generator
+/** ==The `arbitrary` Generator==
   *
   * There is a special generator, `org.scalacheck.Arbitrary.arbitrary`, which generates arbitrary values of any
   * supported type.

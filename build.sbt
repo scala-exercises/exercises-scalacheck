@@ -11,11 +11,11 @@ lazy val scalacheck = (project in file("."))
     Resolver.sonatypeRepo("releases")
   ),
   libraryDependencies ++= Seq(
-    "org.scalatest" %% "scalatest" % "2.2.4",
-    "org.scala-exercises" %% "exercise-compiler" % version.value,
-    "org.scala-exercises" %% "definitions" % version.value,
-    "org.scalacheck" %% "scalacheck" % "1.12.5",
-    "com.github.alexarchambault" %% "scalacheck-shapeless_1.12" % "0.3.1",
+    "org.scalatest" %% "scalatest" % "3.0.1" exclude("org.scalacheck", "scalacheck"),
+    "org.scala-exercises" %% "exercise-compiler" % version.value excludeAll ExclusionRule("com.github.alexarchambault"),
+    "org.scala-exercises" %% "definitions" % version.value excludeAll ExclusionRule("com.github.alexarchambault"),
+    "com.fortysevendeg" %% "scalacheck-datetime" % "0.2.0",
+    "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % "1.1.3",
     compilerPlugin("org.spire-math" %% "kind-projector" % "0.9.0")
   )
 )

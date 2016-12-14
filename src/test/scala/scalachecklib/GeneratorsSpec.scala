@@ -1,14 +1,13 @@
 package scalachecklib
 
 import org.scalacheck.Shapeless._
-import org.scalaexercises.Test
-import org.scalatest.Spec
+import org.scalatest.FunSuite
 import org.scalatest.prop.Checkers
 import shapeless.HNil
 
-class GeneratorsSpec extends Spec with Checkers {
+class GeneratorsSpec extends FunSuite with Checkers {
 
-  def `for-comprehension generator` = {
+  test("for-comprehension generator") {
 
     check(
       Test.testSuccess(
@@ -19,7 +18,7 @@ class GeneratorsSpec extends Spec with Checkers {
 
   }
 
-  def `oneOf method` = {
+  test("oneOf method") {
 
     check(
       Test.testSuccess(
@@ -30,7 +29,7 @@ class GeneratorsSpec extends Spec with Checkers {
 
   }
 
-  def `alphaChar, posNum and listOfN` = {
+  test("alphaChar, posNum and listOfN") {
 
     check(
       Test.testSuccess(
@@ -41,7 +40,7 @@ class GeneratorsSpec extends Spec with Checkers {
 
   }
 
-  def `suchThat condition` = {
+  test("suchThat condition") {
 
     check(
       Test.testSuccess(
@@ -52,7 +51,7 @@ class GeneratorsSpec extends Spec with Checkers {
 
   }
 
-  def `case class generator` = {
+  test("case class generator") {
 
     check(
       Test.testSuccess(
@@ -63,7 +62,7 @@ class GeneratorsSpec extends Spec with Checkers {
 
   }
 
-  def `sized generator` = {
+  test("sized generator") {
 
     check(
       Test.testSuccess(
@@ -74,7 +73,7 @@ class GeneratorsSpec extends Spec with Checkers {
 
   }
 
-  def `list container` = {
+  test("list container") {
 
     check(
       Test.testSuccess(

@@ -1,15 +1,13 @@
 package scalachecklib
 
 import org.scalacheck.Shapeless._
-import org.scalaexercises.Test
-import org.scalatest.Spec
+import org.scalatest.FunSuite
 import org.scalatest.prop.Checkers
 import shapeless.HNil
 
+class PropertiesSpec extends FunSuite with Checkers {
 
-class PropertiesSpec extends Spec with Checkers {
-
-  def `always ends with the second string` = {
+  test("always ends with the second string") {
 
     check(
       Test.testSuccess(
@@ -19,7 +17,7 @@ class PropertiesSpec extends Spec with Checkers {
     )
   }
 
-  def `all numbers are generated between the desired interval` = {
+  test("all numbers are generated between the desired interval") {
 
     check(
       Test.testSuccess(
@@ -29,7 +27,7 @@ class PropertiesSpec extends Spec with Checkers {
     )
   }
 
-  def `all generated numbers are even` = {
+  test("all generated numbers are even") {
 
     check(
       Test.testSuccess(
@@ -39,7 +37,7 @@ class PropertiesSpec extends Spec with Checkers {
     )
   }
 
-  def `only the second condition is true` = {
+  test("only the second condition is true") {
 
     check(
       Test.testSuccess(
@@ -49,7 +47,7 @@ class PropertiesSpec extends Spec with Checkers {
     )
   }
 
-  def `the zero specification only works for 0` = {
+  test("the zero specification only works for 0") {
 
     check(
       Test.testSuccess(
