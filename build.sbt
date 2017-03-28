@@ -1,49 +1,23 @@
+val scalaExerciesV = "0.4.0-SNAPSHOT"
+
+def dep(artifactId: String) = "org.scala-exercises" %% artifactId % scalaExerciesV
+
 lazy val scalacheck = (project in file("."))
-.settings(publishSettings:_*)
-.enablePlugins(ExerciseCompilerPlugin)
-.settings(
-  organization := "org.scala-exercises",
-  name         := "exercises-scalacheck",
-  scalaVersion := "2.11.8",
-  version := "0.3.0-SNAPSHOT",
-  resolvers ++= Seq(
-    Resolver.sonatypeRepo("snapshots"),
-    Resolver.sonatypeRepo("releases")
-  ),
-  libraryDependencies ++= Seq(
-    "org.scalatest" %% "scalatest" % "3.0.1" exclude("org.scalacheck", "scalacheck"),
-    "org.scala-exercises" %% "exercise-compiler" % version.value excludeAll ExclusionRule("com.github.alexarchambault"),
-    "org.scala-exercises" %% "definitions" % version.value excludeAll ExclusionRule("com.github.alexarchambault"),
-    "com.fortysevendeg" %% "scalacheck-datetime" % "0.2.0",
-    "com.github.alexarchambault" %% "scalacheck-shapeless_1.13" % "1.1.3",
-    compilerPlugin("org.spire-math" %% "kind-projector" % "0.9.0")
+  .enablePlugins(ExerciseCompilerPlugin)
+  .settings(
+    name         := "exercises-scalacheck",
+    libraryDependencies ++= Seq(
+      dep("exercise-compiler"),
+      dep("definitions"),
+      %%("scalatest"),
+      %%("scalacheck"),
+      %%("scheckShapeless"),
+      "com.fortysevendeg" %% "scalacheck-datetime" % "0.2.0"
+    )
   )
-)
 
 // Distribution
 
-lazy val gpgFolder = sys.env.getOrElse("PGP_FOLDER", ".")
-
-lazy val publishSettings = Seq(
-  organizationName := "Scala Exercises",
-  organizationHomepage := Some(new URL("https://scala-exercises.org")),
-  startYear := Some(2016),
-  description := "Scala Exercises: The path to enlightenment",
-  homepage := Some(url("https://scala-exercises.org")),
-  pgpPassphrase := Some(sys.env.getOrElse("PGP_PASSPHRASE", "").toCharArray),
-  pgpPublicRing := file(s"$gpgFolder/pubring.gpg"),
-  pgpSecretRing := file(s"$gpgFolder/secring.gpg"),
-  credentials += Credentials("Sonatype Nexus Repository Manager",  "oss.sonatype.org",  sys.env.getOrElse("PUBLISH_USERNAME", ""),  sys.env.getOrElse("PUBLISH_PASSWORD", "")),
-  scmInfo := Some(ScmInfo(url("https://github.com/scala-exercises/exercises-scalacheck"), "https://github.com/scala-exercises/exercises-scalacheck.git")),
-  licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt")),
-  publishMavenStyle := true,
-  publishArtifact in Test := false,
-  pomIncludeRepository := Function.const(false),
-  publishTo := {
-    val nexus = "https://oss.sonatype.org/"
-    if (isSnapshot.value)
-      Some("Snapshots" at nexus + "content/repositories/snapshots")
-    else
-      Some("Releases" at nexus + "service/local/staging/deploy/maven2")
-  }
-)
+pgpPassphrase := Some(getEnvVar("PGP_PASSPHRASE").getOrElse("").toCharArray)
+pgpPublicRing := file(s"$gpgFolder/pubring.gpg")
+pgpSecretRing := file(s"$gpgFolder/secring.gpg")

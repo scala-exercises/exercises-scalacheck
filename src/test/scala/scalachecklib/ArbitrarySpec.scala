@@ -1,3 +1,8 @@
+/*
+ * scala-exercises - exercises-scalacheck
+ * Copyright (C) 2015-2016 47 Degrees, LLC. <http://www.47deg.com>
+ */
+
 package scalachecklib
 
 import org.scalacheck.Shapeless._
