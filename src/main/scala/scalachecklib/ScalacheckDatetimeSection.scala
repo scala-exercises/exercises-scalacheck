@@ -94,7 +94,7 @@ object ScalacheckDatetimeSection
 
     check {
       forAll { zdt: ZonedDateTime =>
-        zdt.getMonth == Month.JANUARY
+        (zdt.getMonth == Month.JANUARY) &&
         (zdt.getDayOfMonth == res0) &&
         (zdt.getHour == res1) &&
         (zdt.getMinute == res2) &&
