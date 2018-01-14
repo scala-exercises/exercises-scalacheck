@@ -11,7 +11,7 @@ import org.scalatest.prop.Checkers
 /** Generators are responsible for generating test data in ScalaCheck, and are represented by the `org.scalacheck.Gen`
  * class. In the `Gen` object, there are several methods for creating new and modifying existing generators.
  * We will show how to use some of them in this section. For a more complete reference of what is available,
- * please see the [[https://www.scalacheck.org/files/scalacheck_2.11-1.12.5-api/index.html API scaladoc]].
+ * please see the [[https://www.scalacheck.org/files/scalacheck_2.11-1.13.4-api/index.html API scaladoc]].
  *
  *
  * A generator can be seen simply as a function that takes some generation parameters, and (maybe) returns a
