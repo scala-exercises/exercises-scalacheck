@@ -1,17 +1,20 @@
 /*
- * scala-exercises - exercises-scalacheck
- * Copyright (C) 2015-2016 47 Degrees, LLC. <http://www.47deg.com>
+ *  scala-exercises - exercises-scalacheck
+ *  Copyright (C) 2015-2019 47 Degrees, LLC. <http://www.47deg.com>
+ *
  */
 
 package scalachecklib
 
 import org.scalatest.Matchers
-import org.scalatest.prop.Checkers
+import org.scalatestplus.scalacheck.Checkers
 
 /** Generators are responsible for generating test data in ScalaCheck, and are represented by the `org.scalacheck.Gen`
- * class. In the `Gen` object, there are several methods for creating new and modifying existing generators.
+ * class. ou need to know how to use this class if you want ScalaCheck to generate data of types that are not supported
+ * by default, or if you want to use the `forAll` method mentioned above, to state properties about a specific subset of
+ * a type. In the `Gen` object, there are several methods for creating new and modifying existing generators.
  * We will show how to use some of them in this section. For a more complete reference of what is available,
- * please see the [[https://www.scalacheck.org/files/scalacheck_2.11-1.13.4-api/index.html API scaladoc]].
+ * please see the API scaladoc.
  *
  *
  * A generator can be seen simply as a function that takes some generation parameters, and (maybe) returns a
@@ -214,13 +217,15 @@ object GeneratorsSection
    * {{{
    * val genIntList      = Gen.containerOf[List,Int](Gen.oneOf(1, 3, 5))
    *
-   * val genStringStream = Gen.containerOf[Stream,String](Gen.alphaStr)
+   * val genStringStream = Gen.containerOf[LazyList,String](Gen.alphaStr)
    *
    * val genBoolArray    = Gen.containerOf[Array,Boolean](true)
    * }}}
    *
-   * By default, ScalaCheck supports generation of `List`, `Stream`, `Set`, `Array`, and `ArrayList`
-   * (from `java.util`). You can add support for additional containers by adding implicit `Buildable` instances.
+   * By default, ScalaCheck supports generation of `List`, `Stream` (Scala 2.10 -
+   * 2.12, deprecated in 2.13), `LazyList` (Scala 2.13), `Set`, `Array`, and
+   * `ArrayList` (from `java.util`). You can add support for additional containers
+   * by adding implicit `Buildable` instances. See `Buildable.scala` for examples.
    *
    * There is also `Gen.nonEmptyContainerOf` for generating non-empty containers, and `Gen.containerOfN` for
    * generating containers of a given size.

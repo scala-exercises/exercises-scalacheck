@@ -1,12 +1,13 @@
 /*
- * scala-exercises - exercises-scalacheck
- * Copyright (C) 2015-2016 47 Degrees, LLC. <http://www.47deg.com>
+ *  scala-exercises - exercises-scalacheck
+ *  Copyright (C) 2015-2019 47 Degrees, LLC. <http://www.47deg.com>
+ *
  */
 
 package scalachecklib
 
 import org.scalatest._
-import org.scalatest.prop.Checkers
+import org.scalatestplus.scalacheck.Checkers
 
 /** A ''property'' is the testable unit in ScalaCheck, and is represented by the `org.scalacheck.Prop` class.
  * There are several ways to create properties in ScalaCheck, one of them is to use the `org.scalacheck.Prop.forAll`
@@ -119,7 +120,7 @@ object PropertiesSection
    * all cases where `n` is non-zero will be thrown away:
    *
    * {{{
-   * scala> import org.scalacheck.Prop.{forAll, BooleanOperators}
+   * scala> import org.scalacheck.Prop.{forAll, propBoolean}
    * scala> val propTrivial = forAll { n: Int =>
    *      |  (n == 0) ==> n + 10 == 10
    *      | }
@@ -138,7 +139,7 @@ object PropertiesSection
    */
   def conditionalProperties(res0: Int) = {
 
-    import org.scalacheck.Prop.{forAll, BooleanOperators}
+    import org.scalacheck.Prop.{forAll, propBoolean}
 
     check {
       forAll { n: Int =>
@@ -201,7 +202,7 @@ object PropertiesSection
 
     class ZeroSpecification extends Properties("Zero") {
 
-      import org.scalacheck.Prop.{forAll, BooleanOperators}
+      import org.scalacheck.Prop.{forAll, propBoolean}
 
       property("addition property") = forAll { n: Int =>
         (n != 0) ==> (n + res0 == n)

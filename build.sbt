@@ -1,18 +1,21 @@
-val scalaExercisesV = "0.4.0-SNAPSHOT"
+import ProjectPlugin.autoImport._
+
+val scalaExercisesV = "0.5.0-SNAPSHOT"
 
 def dep(artifactId: String) = "org.scala-exercises" %% artifactId % scalaExercisesV
 
 lazy val scalacheck = (project in file("."))
   .enablePlugins(ExerciseCompilerPlugin)
   .settings(
-    name         := "exercises-scalacheck",
+    name := "exercises-scalacheck",
     libraryDependencies ++= Seq(
       dep("exercise-compiler"),
       dep("definitions"),
-      %%("scalatest"),
-      %%("scalacheck"),
-      %%("scheckShapeless"),
-      "com.fortysevendeg" %% "scalacheck-datetime" % "0.2.0"
+      %%("scalatest", V.scalatest),
+      %%("scalacheck", V.scalacheck),
+      %%("shapeless", V.shapeless),
+      "com.github.alexarchambault" %% "scalacheck-shapeless_1.14"   % V.scalacheckShapeless,
+      "com.47deg"                  %% "scalacheck-toolbox-datetime" % V.scalacheckDatetime
     )
   )
 
