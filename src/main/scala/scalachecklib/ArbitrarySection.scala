@@ -1,12 +1,13 @@
 /*
- * scala-exercises - exercises-scalacheck
- * Copyright (C) 2015-2016 47 Degrees, LLC. <http://www.47deg.com>
+ *  scala-exercises - exercises-scalacheck
+ *  Copyright (C) 2015-2019 47 Degrees, LLC. <http://www.47deg.com>
+ *
  */
 
 package scalachecklib
 
 import org.scalatest.Matchers
-import org.scalatest.prop.Checkers
+import org.scalatestplus.scalacheck.Checkers
 
 /** ==The `arbitrary` Generator==
  *
@@ -33,10 +34,7 @@ import org.scalatest.prop.Checkers
  *
  * @param name arbitrary
  */
-object ArbitrarySection
-    extends Checkers
-    with Matchers
-    with org.scalaexercises.definitions.Section {
+object ArbitrarySection extends Checkers with Matchers with org.scalaexercises.definitions.Section {
 
   import GeneratorsHelper._
 

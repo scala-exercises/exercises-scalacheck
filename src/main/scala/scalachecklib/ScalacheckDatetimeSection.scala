@@ -1,12 +1,13 @@
 /*
- * scala-exercises - exercises-scalacheck
- * Copyright (C) 2015-2016 47 Degrees, LLC. <http://www.47deg.com>
+ *  scala-exercises - exercises-scalacheck
+ *  Copyright (C) 2015-2019 47 Degrees, LLC. <http://www.47deg.com>
+ *
  */
 
 package scalachecklib
 
 import org.scalatest.Matchers
-import org.scalatest.prop.Checkers
+import org.scalatestplus.scalacheck.Checkers
 
 /** scalacheck-datetime is a library for helping use datetime libraries with ScalaCheck
  *
@@ -18,12 +19,12 @@ import org.scalatest.prop.Checkers
  * {{{
  * resolvers += Resolver.sonatypeRepo("releases")
  *
- * "com.fortysevendeg" %% "scalacheck-datetime" % "0.2.0" % "test"
+ * "com.47deg" %% "scalacheck-toolbox-datetime" % "0.3.1" % "test"
  * }}}
  *
- * Please, visit the [[https://47deg.github.io/scalacheck-datetime homepage]] for more information
+ * Please, visit the [[https://47deg.github.io/scalacheck-toolbox homepage]] for more information
  *
- * @param name scalacheck-datetime
+ * @param name scalacheck-toolbox-datetime
  */
 object ScalacheckDatetimeSection
     extends Checkers
