@@ -8,11 +8,11 @@ package scalachecklib
 
 import org.scalacheck.ScalacheckShapeless._
 import org.scalaexercises.Test
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 import org.scalatestplus.scalacheck.Checkers
 import shapeless.HNil
 
-class ScalacheckDatetimeSpec extends FunSuite with Checkers {
+class ScalacheckDatetimeSpec extends AnyFunSuite with Checkers {
 
   test("simple usage") {
 

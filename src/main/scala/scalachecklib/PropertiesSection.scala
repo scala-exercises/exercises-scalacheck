@@ -6,7 +6,7 @@
 
 package scalachecklib
 
-import org.scalatest._
+import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.Checkers
 
 /** A ''property'' is the testable unit in ScalaCheck, and is represented by the `org.scalacheck.Prop` class.

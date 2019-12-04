@@ -8,11 +8,11 @@ package scalachecklib
 
 import org.scalacheck.ScalacheckShapeless._
 import org.scalaexercises.Test
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 import org.scalatestplus.scalacheck.Checkers
 import shapeless.HNil
 
-class PropertiesSpec extends FunSuite with Checkers {
+class PropertiesSpec extends AnyFunSuite with Checkers {
 
   test("always ends with the second string") {
 

@@ -6,7 +6,7 @@
 
 package scalachecklib
 
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.Checkers
 
 /** ==The `arbitrary` Generator==

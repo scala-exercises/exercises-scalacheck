@@ -6,7 +6,7 @@
 
 package scalachecklib
 
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.Checkers
 
 /** scalacheck-datetime is a library for helping use datetime libraries with ScalaCheck

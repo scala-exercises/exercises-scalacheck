@@ -8,11 +8,11 @@ package scalachecklib
 
 import org.scalacheck.ScalacheckShapeless._
 import org.scalaexercises.Test
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 import org.scalatestplus.scalacheck.Checkers
 import shapeless.HNil
 
-class ArbitrarySpec extends FunSuite with Checkers {
+class ArbitrarySpec extends AnyFunSuite with Checkers {
 
   test("implicit arbitrary char") {
 
