@@ -218,6 +218,6 @@ object PropertiesSection
 
     }
 
-    check(Prop.all(new ZeroSpecification().properties.map(_._2): _*))
+    check(Prop.all(new ZeroSpecification().properties.to(List).map(_._2): _*))
   }
 }
