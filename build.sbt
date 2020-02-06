@@ -14,6 +14,7 @@ lazy val scalacheck = (project in file("."))
       %%("scalatest", V.scalatest),
       %%("scalacheck", V.scalacheck),
       %%("shapeless", V.shapeless),
+      "joda-time" % "joda-time" % V.jodaTime,
       "com.github.alexarchambault" %% "scalacheck-shapeless_1.14"   % V.scalacheckShapeless,
       "com.47deg"                  %% "scalacheck-toolbox-datetime" % V.scalacheckDatetime,
       "org.scalatestplus"          %% "scalatestplus-scalacheck"    % V.scalatestplusScheck
