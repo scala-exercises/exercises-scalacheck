@@ -21,7 +21,7 @@ object ProjectPlugin extends AutoPlugin {
       val scalatestplusScheck: String = "3.1.0.0-RC2"
       val scalacheck: String          = "1.14.3"
       val scalacheckShapeless: String = "1.2.5"
-      val scalacheckDatetime: String  = "0.3.2"
+      val scalacheckDatetime: String  = "0.3.3"
       val jodaTime: String            = "2.10.5"
     }
   }
