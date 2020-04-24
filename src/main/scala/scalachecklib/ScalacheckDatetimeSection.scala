@@ -43,9 +43,7 @@ object ScalacheckDatetimeSection
     import org.scalacheck.Prop.forAll
 
     check {
-      forAll { dt: DateTime =>
-        (dt.getDayOfMonth >= 1 && dt.getDayOfMonth <= 31) == res0
-      }
+      forAll { dt: DateTime => (dt.getDayOfMonth >= 1 && dt.getDayOfMonth <= 31) == res0 }
     }
   }
 
@@ -127,9 +125,7 @@ object ScalacheckDatetimeSection
     val range = Period.years(1)
 
     check {
-      forAll(genDateTimeWithinRange(from, range)) { dt =>
-        dt.getYear == res0
-      }
+      forAll(genDateTimeWithinRange(from, range))(dt => dt.getYear == res0)
     }
   }
 

@@ -79,9 +79,7 @@ object PropertiesSection
     import org.scalacheck.Prop.forAll
 
     check {
-      forAll { (s1: String, s2: String) =>
-        (s1 + s2).endsWith(s2) == res0
-      }
+      forAll((s1: String, s2: String) => (s1 + s2).endsWith(s2) == res0)
     }
 
   }
@@ -103,9 +101,7 @@ object PropertiesSection
     val smallInteger = Gen.choose(0, 100)
 
     check {
-      forAll(smallInteger) { n =>
-        (n >= 0 && n <= 100) == res0
-      }
+      forAll(smallInteger)(n => (n >= 0 && n <= 100) == res0)
     }
 
   }
@@ -142,9 +138,7 @@ object PropertiesSection
     import org.scalacheck.Prop.{forAll, propBoolean}
 
     check {
-      forAll { n: Int =>
-        (n % 2 == 0) ==> (n % 2 == res0)
-      }
+      forAll { n: Int => (n % 2 == 0) ==> (n % 2 == res0) }
     }
 
   }
@@ -177,9 +171,7 @@ object PropertiesSection
       forAll(smallInteger) { n =>
         (n > 100) == res0
       } &&
-      forAll(smallInteger) { n =>
-        (n >= 0) == res1
-      }
+      forAll(smallInteger)(n => (n >= 0) == res1)
     }
 
   }
@@ -204,17 +196,11 @@ object PropertiesSection
 
       import org.scalacheck.Prop.{forAll, propBoolean}
 
-      property("addition property") = forAll { n: Int =>
-        (n != 0) ==> (n + res0 == n)
-      }
+      property("addition property") = forAll { n: Int => (n != 0) ==> (n + res0 == n) }
 
-      property("additive inverse property") = forAll { n: Int =>
-        (n != 0) ==> (n + (-n) == res1)
-      }
+      property("additive inverse property") = forAll { n: Int => (n != 0) ==> (n + (-n) == res1) }
 
-      property("multiplication property") = forAll { n: Int =>
-        (n != 0) ==> (n * res2 == 0)
-      }
+      property("multiplication property") = forAll { n: Int => (n != 0) ==> (n * res2 == 0) }
 
     }
 

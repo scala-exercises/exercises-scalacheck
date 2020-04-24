@@ -50,9 +50,7 @@ object ArbitrarySection extends Checkers with Matchers with org.scalaexercises.d
 
     val validChars: Seq[Char] = res0
 
-    check(forAll { c: Char =>
-      validChars.contains(c)
-    })
+    check(forAll { c: Char => validChars.contains(c) })
   }
 
   /** This becomes more useful when we're dealing with our own data types.
@@ -78,9 +76,7 @@ object ArbitrarySection extends Checkers with Matchers with org.scalaexercises.d
 
     implicit lazy val myFooArbitrary = Arbitrary(fooGen)
 
-    check(forAll { foo: Foo =>
-      (foo.intValue < 0) == res0 && !foo.charValue.isDigit
-    })
+    check(forAll { foo: Foo => (foo.intValue < 0) == res0 && !foo.charValue.isDigit })
   }
 
   /** The `Arbitrary.arbitrary` method also returns a `Gen` object.
@@ -93,9 +89,7 @@ object ArbitrarySection extends Checkers with Matchers with org.scalaexercises.d
 
     val genEightBytes = listOfN(8, Arbitrary.arbitrary[Byte])
 
-    check(forAll(genEightBytes) { list =>
-      list.size == res0
-    })
+    check(forAll(genEightBytes)(list => list.size == res0))
 
   }
 
