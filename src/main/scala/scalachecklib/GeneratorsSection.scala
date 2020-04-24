@@ -72,9 +72,7 @@ object GeneratorsSection
     val validChars: Seq[Char] = res0
 
     check {
-      forAll(vowel) { v =>
-        validChars.contains(v)
-      }
+      forAll(vowel)(v => validChars.contains(v))
     }
   }
 
@@ -120,9 +118,7 @@ object GeneratorsSection
     }
 
     check {
-      forAll(listOfN(10, posNum[Int])) { list =>
-        !list.exists(_ < 0) && list.length == res2
-      }
+      forAll(listOfN(10, posNum[Int]))(list => !list.exists(_ < 0) && list.length == res2)
     }
   }
 
@@ -166,9 +162,7 @@ object GeneratorsSection
     } yield Foo(intValue, charValue)
 
     check {
-      forAll(fooGen) { foo =>
-        foo.intValue > 0 && foo.charValue.isDigit == res0
-      }
+      forAll(fooGen)(foo => foo.intValue > 0 && foo.charValue.isDigit == res0)
     }
   }
 
