@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.6.1](https://github.com/scala-exercises/exercises-scalacheck/tree/v0.6.1) (2020-04-27)
+
+[Full Changelog](https://github.com/scala-exercises/exercises-scalacheck/compare/v0.6.0...v0.6.1)
+
+📈 **Dependency updates**
+
+- Update joda-time to 2.10.6 [\#53](https://github.com/scala-exercises/exercises-scalacheck/pull/53) ([scala-steward](https://github.com/scala-steward))
+
+**Merged pull requests:**
+
+- Compile when Publish [\#55](https://github.com/scala-exercises/exercises-scalacheck/pull/55) ([juanpedromoreno](https://github.com/juanpedromoreno))
+
 ## [v0.6.0](https://github.com/scala-exercises/exercises-scalacheck/tree/v0.6.0) (2020-04-24)
 
 [Full Changelog](https://github.com/scala-exercises/exercises-scalacheck/compare/v0.4.0...v0.6.0)
@@ -25,6 +37,7 @@
 - Update broken scaladoc link to latest version [\#27](https://github.com/scala-exercises/exercises-scalacheck/pull/27) ([frroliveira](https://github.com/frroliveira))
 - Fixed granularity test [\#26](https://github.com/scala-exercises/exercises-scalacheck/pull/26) ([tmucha82](https://github.com/tmucha82))
 - Updating sbt org policies [\#25](https://github.com/scala-exercises/exercises-scalacheck/pull/25) ([dominv](https://github.com/dominv))
+- Updating libraries versions [\#24](https://github.com/scala-exercises/exercises-scalacheck/pull/24) ([dominv](https://github.com/dominv))
 
 ## [v0.4.0](https://github.com/scala-exercises/exercises-scalacheck/tree/v0.4.0) (2017-03-28)
 
@@ -38,7 +51,6 @@
 
 **Merged pull requests:**
 
-- Updating libraries versions [\#24](https://github.com/scala-exercises/exercises-scalacheck/pull/24) ([dominv](https://github.com/dominv))
 - Integrates sbt-org-policies plugin [\#23](https://github.com/scala-exercises/exercises-scalacheck/pull/23) ([juanpedromoreno](https://github.com/juanpedromoreno))
 - Issue 16 - Add scalacheck datetime [\#21](https://github.com/scala-exercises/exercises-scalacheck/pull/21) ([fedefernandez](https://github.com/fedefernandez))
 - Updates PGP keys [\#19](https://github.com/scala-exercises/exercises-scalacheck/pull/19) ([juanpedromoreno](https://github.com/juanpedromoreno))
