@@ -14,7 +14,7 @@ object ProjectPlugin extends AutoPlugin {
       val jodaTime: String            = "2.10.6"
       val shapeless: String           = "2.3.3"
       val scala: String               = "2.13.2"
-      val scalaExercises: String      = "0.6.0-SNAPSHOT"
+      val scalaExercises: String      = "0.6.0"
       val scalacheck: String          = "1.14.3"
       val scalacheckDatetime: String  = "0.3.5"
       val scalacheckShapeless: String = "1.2.5"
