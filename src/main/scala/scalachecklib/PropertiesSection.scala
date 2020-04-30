@@ -74,7 +74,7 @@ object PropertiesSection
    *
    * As mentioned before, `org.scalacheck.Prop.forAll` creates universally quantified properties.
    * `forAll` takes a function as parameter, and creates a property out of it that can be tested with the `check`
-   * method or with Scalatest, like in these examples.
+   * method or with Scalatest (using Checkers trait), like in these examples.
    *
    *
    * The function passed to `forAll` should return `Boolean` or another property, and can take parameters of any types,
