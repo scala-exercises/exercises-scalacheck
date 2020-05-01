@@ -27,6 +27,7 @@ These are the people that have contributed to the _exercises-scalacheck_ project
 - [![jdesiloniz](https://avatars2.githubusercontent.com/u/2835739?v=4&s=20) **jdesiloniz**](https://github.com/jdesiloniz)
 - [![dominv](https://avatars1.githubusercontent.com/u/3943031?v=4&s=20) **dominv**](https://github.com/dominv)
 - [![angoglez](https://avatars0.githubusercontent.com/u/10107285?v=4&s=20) **angoglez**](https://github.com/angoglez)
+- [![aleksandr-vin](https://avatars2.githubusercontent.com/u/223293?v=4&s=20) **aleksandr-vin**](https://github.com/aleksandr-vin)
 - [![ches](https://avatars3.githubusercontent.com/u/13277?v=4&s=20) **ches**](https://github.com/ches)
 - [![frroliveira](https://avatars2.githubusercontent.com/u/1899304?v=4&s=20) **frroliveira**](https://github.com/frroliveira)
 - [![Svetixbot](https://avatars2.githubusercontent.com/u/850792?v=4&s=20) **Svetixbot**](https://github.com/Svetixbot)
