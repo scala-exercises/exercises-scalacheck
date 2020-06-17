@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2020 47 Degrees <https://47deg.com>
+ * Copyright 2016-2020 47 Degrees Open Source <https://www.47deg.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,8 @@ package scalachecklib
 import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.Checkers
 
-/** ==The `arbitrary` Generator==
+/**
+ * ==The `arbitrary` Generator==
  *
  * There is a special generator, `org.scalacheck.Arbitrary.arbitrary`, which generates arbitrary values of any
  * supported type.
@@ -48,7 +49,8 @@ object ArbitrarySection extends Checkers with Matchers with org.scalaexercises.d
 
   import GeneratorsHelper._
 
-  /** Let's see an example where we're defining an `implicit` `arbitrary` instance for `Char`
+  /**
+   * Let's see an example where we're defining an `implicit` `arbitrary` instance for `Char`
    */
   def implicitArbitraryChar(res0: Seq[Char]) = {
 
@@ -63,7 +65,8 @@ object ArbitrarySection extends Checkers with Matchers with org.scalaexercises.d
     check(forAll { c: Char => validChars.contains(c) })
   }
 
-  /** This becomes more useful when we're dealing with our own data types.
+  /**
+   * This becomes more useful when we're dealing with our own data types.
    * We'll use the case class defined in the ''Generators Section'':
    *
    * {{{
@@ -89,7 +92,8 @@ object ArbitrarySection extends Checkers with Matchers with org.scalaexercises.d
     check(forAll { foo: Foo => (foo.intValue < 0) == res0 && !foo.charValue.isDigit })
   }
 
-  /** The `Arbitrary.arbitrary` method also returns a `Gen` object.
+  /**
+   * The `Arbitrary.arbitrary` method also returns a `Gen` object.
    */
   def useArbitraryOnGen(res0: Int) = {
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2020 47 Degrees <https://47deg.com>
+ * Copyright 2016-2020 47 Degrees Open Source <https://www.47deg.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,8 @@ package scalachecklib
 import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.Checkers
 
-/** A ''property'' is the testable unit in ScalaCheck, and is represented by the `org.scalacheck.Prop` class.
+/**
+ * A ''property'' is the testable unit in ScalaCheck, and is represented by the `org.scalacheck.Prop` class.
  * There are several ways to create properties in ScalaCheck, one of them is to use the `org.scalacheck.Prop.forAll`
  * method like in the example below.
  *
@@ -28,7 +29,6 @@ import org.scalatestplus.scalacheck.Checkers
  *   l1.size + l2.size == (l1 ::: l2).size }
  * }}}
  *
- *
  * We can use the `check` method to test it:
  *
  * {{{
@@ -36,13 +36,11 @@ import org.scalatestplus.scalacheck.Checkers
  * + OK, passed 100 tests.
  * }}}
  *
- *
  * OK, that seemed alright. Now, we'll define another property.
  *
  * {{{
  * scala> val propSqrt = forAll { (n: Int) => scala.math.sqrt(n*n) == n }
  * }}}
- *
  *
  * And check it:
  *
@@ -58,7 +56,6 @@ import org.scalatestplus.scalacheck.Checkers
  * [[https://github.com/rickynils/scalacheck/blob/master/doc/UserGuide.md#test-case-minimisation simplified]] to
  * `-1`.
  *
- *
  * The `forAll` method creates universally quantified properties directly, but it is also
  * possible to create new properties by combining other properties, or to use any of the specialised
  * methods in the `org.scalacheck.Prop` object.
@@ -70,12 +67,12 @@ object PropertiesSection
     with Matchers
     with org.scalaexercises.definitions.Section {
 
-  /** ==Universally quantified properties==
+  /**
+   * ==Universally quantified properties==
    *
    * As mentioned before, `org.scalacheck.Prop.forAll` creates universally quantified properties.
    * `forAll` takes a function as parameter, and creates a property out of it that can be tested with the `check`
    * method or with Scalatest (using Checkers trait), like in these examples.
-   *
    *
    * The function passed to `forAll` should return `Boolean` or another property, and can take parameters of any types,
    * as long as there exist implicit `Arbitrary` instances for the types.
@@ -94,7 +91,8 @@ object PropertiesSection
 
   }
 
-  /** When you run `check` on the properties, ScalaCheck generates random instances of the function parameters and
+  /**
+   * When you run `check` on the properties, ScalaCheck generates random instances of the function parameters and
    * evaluates the results, reporting any failing cases.
    *
    * You can also give `forAll` a specific data generator. In the following example `smallInteger` defines a generator
@@ -116,7 +114,8 @@ object PropertiesSection
 
   }
 
-  /** ==Conditional properties==
+  /**
+   * ==Conditional properties==
    *
    * Sometimes, a specification takes the form of an implication. In ScalaCheck, you can use the implication
    * operator `==>` to filter the generated values.
@@ -153,7 +152,8 @@ object PropertiesSection
 
   }
 
-  /** ==Combining Properties==
+  /**
+   * ==Combining Properties==
    *
    * A third way of creating properties, is to combine existing properties into new ones.
    *
@@ -186,7 +186,8 @@ object PropertiesSection
 
   }
 
-  /** ==Grouping Properties==
+  /**
+   * ==Grouping Properties==
    *
    * Often you want to specify several related properties, perhaps for all methods in a class.
    * ScalaCheck provides a simple way of doing this, through the `Properties` trait.
@@ -197,7 +198,6 @@ object PropertiesSection
    * so you can use it just as if it was a single property.
    *
    * That single property holds if and only if all of the contained properties hold.
-   *
    */
   def groupingProperties(res0: Int, res1: Int, res2: Int) = {
     import org.scalacheck.{Prop, Properties}

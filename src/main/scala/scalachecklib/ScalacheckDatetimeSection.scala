@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2020 47 Degrees <https://47deg.com>
+ * Copyright 2016-2020 47 Degrees Open Source <https://www.47deg.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,8 @@ package scalachecklib
 import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.Checkers
 
-/** scalacheck-datetime is a library for helping use datetime libraries with ScalaCheck
+/**
+ * scalacheck-datetime is a library for helping use datetime libraries with ScalaCheck
  *
  * The motivation behind this library is to provide a simple, easy way to provide generated date and time instances
  * that are useful to your own domain.
@@ -41,7 +42,8 @@ object ScalacheckDatetimeSection
     with Matchers
     with org.scalaexercises.definitions.Section {
 
-  /** ==Usage==
+  /**
+   * ==Usage==
    *
    * To arbitrarily generate dates and times, you need to have the `Arbitrary` in scope for your date/time class.
    * Assuming Joda Time:
@@ -57,7 +59,8 @@ object ScalacheckDatetimeSection
     }
   }
 
-  /** ==A note on imports==
+  /**
+   * ==A note on imports==
    *
    * For all of the examples given in this document, you can substitute `jdk8` for `joda` and vice-versa,
    * depending on which library you would like to generate instances for.
@@ -114,7 +117,8 @@ object ScalacheckDatetimeSection
 
   }
 
-  /** ==Creating Ranges==
+  /**
+   * ==Creating Ranges==
    *
    * You can generate date/time instances only within a certain range, using the `genDateTimeWithinRange` in the
    * `GenDateTime` class. The function takes two parameters, the date/time instances as a base from which to generate
@@ -139,7 +143,8 @@ object ScalacheckDatetimeSection
     }
   }
 
-  /** ==Using Granularity and Ranges Together==
+  /**
+   * ==Using Granularity and Ranges Together==
    *
    * As you would expect, it is possible to use the granularity and range concepts together.
    * This example should not show anything surprising by now:
