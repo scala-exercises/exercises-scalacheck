@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2020 47 Degrees <https://47deg.com>
+ * Copyright 2016-2020 47 Degrees Open Source <https://www.47deg.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,8 @@
 
 package scalachecklib
 
-/** ScalaCheck is a tool for testing Scala and Java programs, based on property specifications and automatic test data generation.
+/**
+ * ScalaCheck is a tool for testing Scala and Java programs, based on property specifications and automatic test data generation.
  *
  * @param name scalacheck
  */
@@ -26,12 +27,13 @@ object ScalacheckLibrary extends org.scalaexercises.definitions.Library {
 
   override def color = Some("#EBC477")
 
-  override def sections = List(
-    PropertiesSection,
-    GeneratorsSection,
-    ArbitrarySection,
-    ScalacheckDatetimeSection
-  )
+  override def sections =
+    List(
+      PropertiesSection,
+      GeneratorsSection,
+      ArbitrarySection,
+      ScalacheckDatetimeSection
+    )
 
   override def logoPath = "scalacheck"
 }

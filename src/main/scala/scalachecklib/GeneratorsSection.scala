@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2020 47 Degrees <https://47deg.com>
+ * Copyright 2016-2020 47 Degrees Open Source <https://www.47deg.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,13 +19,13 @@ package scalachecklib
 import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.Checkers
 
-/** Generators are responsible for generating test data in ScalaCheck, and are represented by the `org.scalacheck.Gen`
+/**
+ * Generators are responsible for generating test data in ScalaCheck, and are represented by the `org.scalacheck.Gen`
  * class. ou need to know how to use this class if you want ScalaCheck to generate data of types that are not supported
  * by default, or if you want to use the `forAll` method mentioned above, to state properties about a specific subset of
  * a type. In the `Gen` object, there are several methods for creating new and modifying existing generators.
  * We will show how to use some of them in this section. For a more complete reference of what is available,
  * please see the API scaladoc.
- *
  *
  * A generator can be seen simply as a function that takes some generation parameters, and (maybe) returns a
  * generated value. That is, the type `Gen[T]` may be thought of as a function of type `Gen.Params => Option[T]`.
@@ -42,7 +42,8 @@ object GeneratorsSection
 
   import GeneratorsHelper._
 
-  /** Let's see how to create a new generator. The best way to do it is to use the generator combinators that exist
+  /**
+   * Let's see how to create a new generator. The best way to do it is to use the generator combinators that exist
    * in the `org.scalacheck.Gen` module. These can be combined using a for-comprehension. Suppose you need a generator
    * which generates a tuple that contains two random integer values, one of them being at least twice as big as the
    * other. The following definition does this:
@@ -65,10 +66,10 @@ object GeneratorsSection
 
   }
 
-  /** You can create generators that pick one value out of a selection of values.
+  /**
+   * You can create generators that pick one value out of a selection of values.
    * The `oneOf` method creates a generator that randomly picks one of its parameters each time it generates a value.
    * Notice that plain values are implicitly converted to generators (which always generate that value) if needed.
-   *
    *
    * The following generator generates a vowel:
    */
@@ -86,7 +87,8 @@ object GeneratorsSection
     }
   }
 
-  /** The distribution is uniform, but if you want to control it you can use the frequency combinator:
+  /**
+   * The distribution is uniform, but if you want to control it you can use the frequency combinator:
    *
    * {{{
    * val vowel = Gen.frequency(
@@ -132,7 +134,8 @@ object GeneratorsSection
     }
   }
 
-  /** ==Conditional Generators==
+  /**
+   * ==Conditional Generators==
    *
    * Conditional generators can be defined using `Gen.suchThat`.
    *
@@ -153,7 +156,8 @@ object GeneratorsSection
     }
   }
 
-  /** ==Case class Generators==
+  /**
+   * ==Case class Generators==
    *
    * On the basis of the above we can create a generator for the following case class:
    *
@@ -176,7 +180,8 @@ object GeneratorsSection
     }
   }
 
-  /** ==Sized Generators==
+  /**
+   * ==Sized Generators==
    *
    * When ScalaCheck uses a generator to generate a value, it feeds it with some parameters. One of the parameters
    * the generator is given is a size value, which some generators use to generate their values.
@@ -212,7 +217,8 @@ object GeneratorsSection
     }
   }
 
-  /** ==Generating Containers==
+  /**
+   * ==Generating Containers==
    *
    * There is a special generator, `Gen.containerOf`, that generates containers such as lists and arrays.
    * It takes another generator as argument which is responsible for generating the individual items.
