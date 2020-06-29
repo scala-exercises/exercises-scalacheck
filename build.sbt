@@ -18,8 +18,8 @@ lazy val exercises = (project in file("."))
   .settings(name := "exercises-scalacheck")
   .settings(
     libraryDependencies ++= Seq(
-      "org.scala-exercises"        %% "exercise-compiler"           % "0.6.1",
-      "org.scala-exercises"        %% "definitions"                 % "0.6.1",
+      "org.scala-exercises"        %% "exercise-compiler"           % "0.6.3",
+      "org.scala-exercises"        %% "definitions"                 % "0.6.3",
       "joda-time"                   % "joda-time"                   % "2.10.6",
       "com.47deg"                  %% "scalacheck-toolbox-datetime" % "0.3.5",
       "com.chuusai"                %% "shapeless"                   % "2.3.3",
