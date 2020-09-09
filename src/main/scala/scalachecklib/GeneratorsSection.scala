@@ -59,8 +59,8 @@ object GeneratorsSection
     } yield (n, m)
 
     check {
-      forAll(myGen) {
-        case (n, m) => (m >= 2 * n) == res0
+      forAll(myGen) { case (n, m) =>
+        (m >= 2 * n) == res0
       }
     }
 
@@ -210,9 +210,8 @@ object GeneratorsSection
     }
 
     check {
-      forAll(myGen) {
-        case (genSize, posN, negN) =>
-          posN.length == genSize / res0 && negN.length == genSize * res1 / 3
+      forAll(myGen) { case (genSize, posN, negN) =>
+        posN.length == genSize / res0 && negN.length == genSize * res1 / 3
       }
     }
   }
