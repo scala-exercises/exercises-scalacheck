@@ -20,20 +20,23 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.Checkers
 
 /**
- * Generators are responsible for generating test data in ScalaCheck, and are represented by the `org.scalacheck.Gen`
- * class. ou need to know how to use this class if you want ScalaCheck to generate data of types that are not supported
- * by default, or if you want to use the `forAll` method mentioned above, to state properties about a specific subset of
- * a type. In the `Gen` object, there are several methods for creating new and modifying existing generators.
- * We will show how to use some of them in this section. For a more complete reference of what is available,
+ * Generators are responsible for generating test data in ScalaCheck, and are represented by the
+ * `org.scalacheck.Gen` class. ou need to know how to use this class if you want ScalaCheck to
+ * generate data of types that are not supported by default, or if you want to use the `forAll`
+ * method mentioned above, to state properties about a specific subset of a type. In the `Gen`
+ * object, there are several methods for creating new and modifying existing generators. We will
+ * show how to use some of them in this section. For a more complete reference of what is available,
  * please see the API scaladoc.
  *
- * A generator can be seen simply as a function that takes some generation parameters, and (maybe) returns a
- * generated value. That is, the type `Gen[T]` may be thought of as a function of type `Gen.Params => Option[T]`.
- * However, the `Gen` class contains additional methods to make it possible to map generators, use them in
- * for-comprehensions and so on. Conceptually, though, you should think of generators simply as functions, and the
- * combinators in the `Gen` object can be used to create or modify the behaviour of such generator functions.
+ * A generator can be seen simply as a function that takes some generation parameters, and (maybe)
+ * returns a generated value. That is, the type `Gen[T]` may be thought of as a function of type
+ * `Gen.Params => Option[T]`. However, the `Gen` class contains additional methods to make it
+ * possible to map generators, use them in for-comprehensions and so on. Conceptually, though, you
+ * should think of generators simply as functions, and the combinators in the `Gen` object can be
+ * used to create or modify the behaviour of such generator functions.
  *
- * @param name generators
+ * @param name
+ *   generators
  */
 object GeneratorsSection
     extends Checkers
@@ -43,10 +46,11 @@ object GeneratorsSection
   import GeneratorsHelper._
 
   /**
-   * Let's see how to create a new generator. The best way to do it is to use the generator combinators that exist
-   * in the `org.scalacheck.Gen` module. These can be combined using a for-comprehension. Suppose you need a generator
-   * which generates a tuple that contains two random integer values, one of them being at least twice as big as the
-   * other. The following definition does this:
+   * Let's see how to create a new generator. The best way to do it is to use the generator
+   * combinators that exist in the `org.scalacheck.Gen` module. These can be combined using a
+   * for-comprehension. Suppose you need a generator which generates a tuple that contains two
+   * random integer values, one of them being at least twice as big as the other. The following
+   * definition does this:
    */
   def forComprehension(res0: Boolean) = {
 
@@ -67,9 +71,10 @@ object GeneratorsSection
   }
 
   /**
-   * You can create generators that pick one value out of a selection of values.
-   * The `oneOf` method creates a generator that randomly picks one of its parameters each time it generates a value.
-   * Notice that plain values are implicitly converted to generators (which always generate that value) if needed.
+   * You can create generators that pick one value out of a selection of values. The `oneOf` method
+   * creates a generator that randomly picks one of its parameters each time it generates a value.
+   * Notice that plain values are implicitly converted to generators (which always generate that
+   * value) if needed.
    *
    * The following generator generates a vowel:
    */
@@ -88,7 +93,8 @@ object GeneratorsSection
   }
 
   /**
-   * The distribution is uniform, but if you want to control it you can use the frequency combinator:
+   * The distribution is uniform, but if you want to control it you can use the frequency
+   * combinator:
    *
    * {{{
    * val vowel = Gen.frequency(
@@ -100,8 +106,8 @@ object GeneratorsSection
    * )
    * }}}
    *
-   * Now, the vowel generator will generate ''E:s'' more often than ''U:s''. Roughly, 4/14 of the values generated
-   * will be ''E:s'', and 1/14 of them will be ''U:s''.
+   * Now, the vowel generator will generate ''E:s'' more often than ''U:s''. Roughly, 4/14 of the
+   * values generated will be ''E:s'', and 1/14 of them will be ''U:s''.
    *
    * Other methods in the `Gen` API:
    * {{{
@@ -139,10 +145,11 @@ object GeneratorsSection
    *
    * Conditional generators can be defined using `Gen.suchThat`.
    *
-   * Conditional generators works just like conditional properties, in the sense that if the condition is too hard,
-   * ScalaCheck might not be able to generate enough values, and it might report a property test as undecided.
-   * The `smallEvenInteger` definition is probably OK, since it will only throw away half of the generated numbers,
-   * but one has to be careful when using the `suchThat` operator.
+   * Conditional generators works just like conditional properties, in the sense that if the
+   * condition is too hard, ScalaCheck might not be able to generate enough values, and it might
+   * report a property test as undecided. The `smallEvenInteger` definition is probably OK, since it
+   * will only throw away half of the generated numbers, but one has to be careful when using the
+   * `suchThat` operator.
    */
   def conditionalOperators(res0: Int) = {
 
@@ -183,17 +190,20 @@ object GeneratorsSection
   /**
    * ==Sized Generators==
    *
-   * When ScalaCheck uses a generator to generate a value, it feeds it with some parameters. One of the parameters
-   * the generator is given is a size value, which some generators use to generate their values.
+   * When ScalaCheck uses a generator to generate a value, it feeds it with some parameters. One of
+   * the parameters the generator is given is a size value, which some generators use to generate
+   * their values.
    *
-   * If you want to use the size parameter in your own generator, you can use the `Gen.sized` method:
+   * If you want to use the size parameter in your own generator, you can use the `Gen.sized`
+   * method:
    *
    * {{{
    * def sized[T](f: Int => Gen[T])
    * }}}
    *
-   * In this example we're creating a generator that produces two lists of numbers where 1/3 are positive and 2/3 are
-   * negative. ''Note: we're also returning the original size to verify the behaviour.''
+   * In this example we're creating a generator that produces two lists of numbers where 1/3 are
+   * positive and 2/3 are negative. ''Note: we're also returning the original size to verify the
+   * behaviour.''
    */
   def sizedGenerator(res0: Int, res1: Int) = {
 
@@ -219,9 +229,9 @@ object GeneratorsSection
   /**
    * ==Generating Containers==
    *
-   * There is a special generator, `Gen.containerOf`, that generates containers such as lists and arrays.
-   * It takes another generator as argument which is responsible for generating the individual items.
-   * You can use it in the following way:
+   * There is a special generator, `Gen.containerOf`, that generates containers such as lists and
+   * arrays. It takes another generator as argument which is responsible for generating the
+   * individual items. You can use it in the following way:
    *
    * {{{
    * val genIntList      = Gen.containerOf[List,Int](Gen.oneOf(1, 3, 5))
@@ -231,13 +241,13 @@ object GeneratorsSection
    * val genBoolArray    = Gen.containerOf[Array,Boolean](true)
    * }}}
    *
-   * By default, ScalaCheck supports generation of `List`, `Stream` (Scala 2.10 -
-   * 2.12, deprecated in 2.13), `LazyList` (Scala 2.13), `Set`, `Array`, and
-   * `ArrayList` (from `java.util`). You can add support for additional containers
-   * by adding implicit `Buildable` instances. See `Buildable.scala` for examples.
+   * By default, ScalaCheck supports generation of `List`, `Stream` (Scala 2.10 - 2.12, deprecated
+   * in 2.13), `LazyList` (Scala 2.13), `Set`, `Array`, and `ArrayList` (from `java.util`). You can
+   * add support for additional containers by adding implicit `Buildable` instances. See
+   * `Buildable.scala` for examples.
    *
-   * There is also `Gen.nonEmptyContainerOf` for generating non-empty containers, and `Gen.containerOfN` for
-   * generating containers of a given size.
+   * There is also `Gen.nonEmptyContainerOf` for generating non-empty containers, and
+   * `Gen.containerOfN` for generating containers of a given size.
    */
   def generatingContainers(res0: List[Int]) = {
 

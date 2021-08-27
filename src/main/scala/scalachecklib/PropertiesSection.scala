@@ -20,9 +20,9 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatestplus.scalacheck.Checkers
 
 /**
- * A ''property'' is the testable unit in ScalaCheck, and is represented by the `org.scalacheck.Prop` class.
- * There are several ways to create properties in ScalaCheck, one of them is to use the `org.scalacheck.Prop.forAll`
- * method like in the example below.
+ * A ''property'' is the testable unit in ScalaCheck, and is represented by the
+ * `org.scalacheck.Prop` class. There are several ways to create properties in ScalaCheck, one of
+ * them is to use the `org.scalacheck.Prop.forAll` method like in the example below.
  *
  * {{{
  * scala> val propConcatLists = forAll { (l1: List[Int], l2: List[Int]) =>
@@ -51,16 +51,18 @@ import org.scalatestplus.scalacheck.Checkers
  * > ARG_0_ORIGINAL: -488187735
  * }}}
  *
- * Not surprisingly, the property doesn't hold. The argument `-1` falsifies it. You can also see that the argument
- * `-488187735` falsifies the property. That was the first argument ScalaCheck found, and it was then
- * [[https://github.com/rickynils/scalacheck/blob/master/doc/UserGuide.md#test-case-minimisation simplified]] to
- * `-1`.
+ * Not surprisingly, the property doesn't hold. The argument `-1` falsifies it. You can also see
+ * that the argument `-488187735` falsifies the property. That was the first argument ScalaCheck
+ * found, and it was then
+ * [[https://github.com/rickynils/scalacheck/blob/master/doc/UserGuide.md#test-case-minimisation simplified]]
+ * to `-1`.
  *
- * The `forAll` method creates universally quantified properties directly, but it is also
- * possible to create new properties by combining other properties, or to use any of the specialised
- * methods in the `org.scalacheck.Prop` object.
+ * The `forAll` method creates universally quantified properties directly, but it is also possible
+ * to create new properties by combining other properties, or to use any of the specialised methods
+ * in the `org.scalacheck.Prop` object.
  *
- * @param name properties
+ * @param name
+ *   properties
  */
 object PropertiesSection
     extends Checkers
@@ -71,13 +73,13 @@ object PropertiesSection
    * ==Universally quantified properties==
    *
    * As mentioned before, `org.scalacheck.Prop.forAll` creates universally quantified properties.
-   * `forAll` takes a function as parameter, and creates a property out of it that can be tested with the `check`
-   * method or with Scalatest (using Checkers trait), like in these examples.
+   * `forAll` takes a function as parameter, and creates a property out of it that can be tested
+   * with the `check` method or with Scalatest (using Checkers trait), like in these examples.
    *
-   * The function passed to `forAll` should return `Boolean` or another property, and can take parameters of any types,
-   * as long as there exist implicit `Arbitrary` instances for the types.
-   * By default, ScalaCheck has instances for common types like `Int`, `String`, `List`, etc, but it is also possible
-   * to define your own `Arbitrary` instances.
+   * The function passed to `forAll` should return `Boolean` or another property, and can take
+   * parameters of any types, as long as there exist implicit `Arbitrary` instances for the types.
+   * By default, ScalaCheck has instances for common types like `Int`, `String`, `List`, etc, but it
+   * is also possible to define your own `Arbitrary` instances.
    *
    * For example:
    */
@@ -92,14 +94,15 @@ object PropertiesSection
   }
 
   /**
-   * When you run `check` on the properties, ScalaCheck generates random instances of the function parameters and
-   * evaluates the results, reporting any failing cases.
+   * When you run `check` on the properties, ScalaCheck generates random instances of the function
+   * parameters and evaluates the results, reporting any failing cases.
    *
-   * You can also give `forAll` a specific data generator. In the following example `smallInteger` defines a generator
-   * that generates integers between `0` and `100`, inclusively.
+   * You can also give `forAll` a specific data generator. In the following example `smallInteger`
+   * defines a generator that generates integers between `0` and `100`, inclusively.
    *
-   * This way of using the `forAll` method is good to use when you want to control the data generation by specifying
-   * exactly which generator that should be used, and not rely on a default generator for the given type.
+   * This way of using the `forAll` method is good to use when you want to control the data
+   * generation by specifying exactly which generator that should be used, and not rely on a default
+   * generator for the given type.
    */
   def universallyQuantifiedPropertiesGen(res0: Boolean) = {
 
@@ -117,28 +120,29 @@ object PropertiesSection
   /**
    * ==Conditional properties==
    *
-   * Sometimes, a specification takes the form of an implication. In ScalaCheck, you can use the implication
-   * operator `==>` to filter the generated values.
+   * Sometimes, a specification takes the form of an implication. In ScalaCheck, you can use the
+   * implication operator `==>` to filter the generated values.
    *
-   * If the implication operator is given a condition that is hard or impossible to fulfill, ScalaCheck might
-   * not find enough passing test cases to state that the property holds. In the following trivial example,
-   * all cases where `n` is non-zero will be thrown away:
+   * If the implication operator is given a condition that is hard or impossible to fulfill,
+   * ScalaCheck might not find enough passing test cases to state that the property holds. In the
+   * following trivial example, all cases where `n` is non-zero will be thrown away:
    *
    * {{{
    * scala> import org.scalacheck.Prop.{forAll, propBoolean}
    * scala> val propTrivial = forAll { n: Int =>
-   *      |  (n == 0) ==> n + 10 == 10
-   *      | }
+   *       |  (n == 0) ==> n + 10 == 10
+   *       | }
    *
    * scala> propTrivial.check
    * ! Gave up after only 4 passed tests. 500 tests were discarded.
    * }}}
    *
-   * It is possible to tell ScalaCheck to try harder when it generates test cases, but generally you should
-   * try to refactor your property specification instead of generating more test cases, if you get this scenario.
+   * It is possible to tell ScalaCheck to try harder when it generates test cases, but generally you
+   * should try to refactor your property specification instead of generating more test cases, if
+   * you get this scenario.
    *
-   * Using implications, we realise that a property might not just pass or fail, it could also be undecided if
-   * the implication condition doesn't get fulfilled.
+   * Using implications, we realise that a property might not just pass or fail, it could also be
+   * undecided if the implication condition doesn't get fulfilled.
    *
    * In this example, ScalaCheck will only care for the cases when `n` is an even number.
    */
@@ -167,8 +171,8 @@ object PropertiesSection
    * val p7 = atLeastOne(p1, p2) // same as p1 || p2
    * }}}
    *
-   * Here, `p3` will hold if and only if both `p1` and `p2` hold, `p4` will hold if either `p1` or `p2` holds,
-   * and `p5` will hold if `p1` holds exactly when `p2` holds and vice versa.
+   * Here, `p3` will hold if and only if both `p1` and `p2` hold, `p4` will hold if either `p1` or
+   * `p2` holds, and `p5` will hold if `p1` holds exactly when `p2` holds and vice versa.
    */
   def combiningProperties(res0: Boolean, res1: Boolean) = {
 
@@ -190,12 +194,12 @@ object PropertiesSection
    * ==Grouping Properties==
    *
    * Often you want to specify several related properties, perhaps for all methods in a class.
-   * ScalaCheck provides a simple way of doing this, through the `Properties` trait.
-   * Look at the following specifications that define some properties for zero.
+   * ScalaCheck provides a simple way of doing this, through the `Properties` trait. Look at the
+   * following specifications that define some properties for zero.
    *
-   * You can use the check method of the `Properties` class to check all specified properties,
-   * just like for simple `Prop` instances. In fact, `Properties` is a subtype of `Prop`,
-   * so you can use it just as if it was a single property.
+   * You can use the check method of the `Properties` class to check all specified properties, just
+   * like for simple `Prop` instances. In fact, `Properties` is a subtype of `Prop`, so you can use
+   * it just as if it was a single property.
    *
    * That single property holds if and only if all of the contained properties hold.
    */
