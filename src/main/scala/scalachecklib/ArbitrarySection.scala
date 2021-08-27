@@ -22,8 +22,8 @@ import org.scalatestplus.scalacheck.Checkers
 /**
  * ==The `arbitrary` Generator==
  *
- * There is a special generator, `org.scalacheck.Arbitrary.arbitrary`, which generates arbitrary values of any
- * supported type.
+ * There is a special generator, `org.scalacheck.Arbitrary.arbitrary`, which generates arbitrary
+ * values of any supported type.
  *
  * {{{
  * val evenInteger = Arbitrary.arbitrary[Int] suchThat (_ % 2 == 0)
@@ -32,18 +32,20 @@ import org.scalatestplus.scalacheck.Checkers
  * } yield xs.map(x => x*x)
  * }}}
  *
- * The `arbitrary` generator is the generator used by ScalaCheck when it generates values for ''property'' parameters.
- * Most of the times, you have to supply the type of the value to `arbitrary`, like above, since Scala often can't
- * infer the type automatically. You can use `arbitrary` for any type that has an implicit `Arbitrary` instance.
- * As mentioned earlier, ScalaCheck has default support for common types, but it is also possible to define your own
- * implicit `Arbitrary` instances for unsupported types. See the following implicit Arbitrary definition for booleans,
- * that comes from the ScalaCheck implementation.
+ * The `arbitrary` generator is the generator used by ScalaCheck when it generates values for
+ * ''property'' parameters. Most of the times, you have to supply the type of the value to
+ * `arbitrary`, like above, since Scala often can't infer the type automatically. You can use
+ * `arbitrary` for any type that has an implicit `Arbitrary` instance. As mentioned earlier,
+ * ScalaCheck has default support for common types, but it is also possible to define your own
+ * implicit `Arbitrary` instances for unsupported types. See the following implicit Arbitrary
+ * definition for booleans, that comes from the ScalaCheck implementation.
  *
  * {{{
  * implicit lazy val arbBool: Arbitrary[Boolean] = Arbitrary(oneOf(true, false))
  * }}}
  *
- * @param name arbitrary
+ * @param name
+ *   arbitrary
  */
 object ArbitrarySection extends Checkers with Matchers with org.scalaexercises.definitions.Section {
 
@@ -66,15 +68,15 @@ object ArbitrarySection extends Checkers with Matchers with org.scalaexercises.d
   }
 
   /**
-   * This becomes more useful when we're dealing with our own data types.
-   * We'll use the case class defined in the ''Generators Section'':
+   * This becomes more useful when we're dealing with our own data types. We'll use the case class
+   * defined in the ''Generators Section'':
    *
    * {{{
    * case class Foo(intValue: Int, charValue: Char)
    * }}}
    *
-   * Having an implicit `def` or `val` of our data type in the scope allow us to use the `forAll` method without
-   * specifying the ''generator''
+   * Having an implicit `def` or `val` of our data type in the scope allow us to use the `forAll`
+   * method without specifying the ''generator''
    */
   def implicitArbitraryCaseClass(res0: Boolean) = {
 
