@@ -21,7 +21,7 @@ import org.scalatestplus.scalacheck.Checkers
 
 /**
  * Generators are responsible for generating test data in ScalaCheck, and are represented by the
- * `org.scalacheck.Gen` class. ou need to know how to use this class if you want ScalaCheck to
+ * `org.scalacheck.Gen` class. You need to know how to use this class if you want ScalaCheck to
  * generate data of types that are not supported by default, or if you want to use the `forAll`
  * method mentioned above, to state properties about a specific subset of a type. In the `Gen`
  * object, there are several methods for creating new and modifying existing generators. We will
