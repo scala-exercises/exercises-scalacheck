@@ -25,7 +25,7 @@ lazy val exercises = (project in file("."))
       "org.scala-exercises"        %% "definitions"                 % "0.7.1",
       "joda-time"                   % "joda-time"                   % "2.10.13",
       "com.47deg"                  %% "scalacheck-toolbox-datetime" % "0.6.0",
-      "com.chuusai"                %% "shapeless"                   % "2.3.7",
+      "com.chuusai"                %% "shapeless"                   % "2.3.8",
       "org.scalatest"              %% "scalatest"                   % "3.2.11",
       "org.scalacheck"             %% "scalacheck"                  % "1.15.4",
       "org.scalatestplus"          %% "scalacheck-1-14"             % "3.2.2.0",
